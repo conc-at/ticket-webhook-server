@@ -36,6 +36,10 @@ app.post('/tito/:key', function(req, res){
   else res.send('error')
 })
 
+app.get('/ping', function(req, res){
+  res.send('ok')
+})
+
 server.listen(process.env.PORT, function() {
   console.log('listening on port %d', process.env.PORT)
 })
