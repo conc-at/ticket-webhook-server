@@ -20,6 +20,7 @@ app.disable('x-powered-by')
 app.use(bodyParser.json())
 
 app.post('/tito/:key', function(req, res){
+  console.log('new tito request')
   var whname = req.headers['x-webhook-name']
   if(req.params.key  && req.params.key === process.env.TITO_ACCESS_KEY && whname){
     var created = whname === 'ticket.created'
