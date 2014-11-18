@@ -4,6 +4,18 @@ var app = require('express')()
 var bodyParser = require('body-parser')
 var server = require('http').Server(app)
 
+var slack = require('slack-notify')(process.env.SLACK_WEBHOOK_URL);
+
+slack.onError = function(err){
+  console.log('slack error:', err)
+}
+
+var ticketSlack = slack.extend({
+  channel: '#general',
+  icon_emoji: ':ticket:',
+  username: 'Ticket'
+})
+
 app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -14,6 +26,7 @@ app.post('/tito/:key', function(req, res){
     var created = whname === 'ticket.created'
     if(created || whname === 'ticket.updated'){
       console.log(req.body)
+      if(created) ticketSlack('"' + req.body.name + '" bought a new ticket')
       res.send('ok')
     }
     else res.send('error')
