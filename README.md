@@ -1,4 +1,4 @@
-# Webhook server for [stripe](https://stripe.com) and [Tito](https://ti.to)
+# Webhook server for [Tito](https://ti.to)
 
 ## Licence
 

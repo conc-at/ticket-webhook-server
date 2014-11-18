@@ -18,7 +18,6 @@ var ticketSlack = slack.extend({
 
 app.disable('x-powered-by')
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
 
 app.post('/tito/:key', function(req, res){
   var whname = req.headers['x-webhook-name']
