@@ -11,7 +11,7 @@ slack.onError = function(err){
 }
 
 var ticketSlack = slack.extend({
-  channel: '#general',
+  channel: process.env.SLACK_CHANNEL || '#general',
   icon_emoji: ':ticket:',
   username: 'Ticket'
 })
