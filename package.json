@@ -1,0 +1,24 @@
+{
+  "name": "ticket-webhook-server",
+  "version": "1.0.0",
+  "description": "webhook server for stripe and tito",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conc-at/ticket-webhook-server.git"
+  },
+  "keywords": [
+    "webhook",
+    "stripe",
+    "tito"
+  ],
+  "author": "Christoph Witzko <npm@christophwitzko.com> (http://christophwitzko.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/conc-at/ticket-webhook-server/issues"
+  },
+  "homepage": "https://github.com/conc-at/ticket-webhook-server"
+}
