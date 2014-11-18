@@ -4,7 +4,8 @@
   "description": "webhook server for stripe and tito",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nf start"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/conc-at/ticket-webhook-server/issues"
   },
-  "homepage": "https://github.com/conc-at/ticket-webhook-server"
+  "homepage": "https://github.com/conc-at/ticket-webhook-server",
+  "devDependencies": {
+    "foreman": "^1.1.0"
+  },
+  "dependencies": {
+    "express": "^4.10.2"
+  }
 }
