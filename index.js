@@ -25,8 +25,10 @@ app.post('/tito/:key', function(req, res){
   if(req.params.key  && req.params.key === process.env.TITO_ACCESS_KEY && whname){
     var created = whname === 'ticket.created'
     if(created || whname === 'ticket.updated'){
-      console.log(req.body)
-      if(created) ticketSlack('"' + req.body.name + '" bought a new ticket')
+      var msg = '"' + req.body.name + '" '
+      if(created) msg += 'bought a new ticket.'
+      else msg += 'updated a ticket.'
+      ticketSlack(msg + ' (' + req.body.release + ')')
       res.send('ok')
     }
     else res.send('error')
