@@ -1,5 +1,6 @@
 'use strict'
 
+/*jshint camelcase: false */
 var app = require('express')()
 var bodyParser = require('body-parser')
 var server = require('http').Server(app)
@@ -23,17 +24,15 @@ app.post('/tito/:key', function(req, res){
   console.log('new tito request')
   var whname = req.headers['x-webhook-name']
   if(req.params.key  && req.params.key === process.env.TITO_ACCESS_KEY && whname){
-    console.log(whname)
-    console.log(req.body)
-    var created = whname === 'ticket.created'
-    if(created || whname === 'ticket.updated'){
-      var msg = '"' + req.body.name + '" '
-      if(created) msg += 'bought a new ticket.'
-      else msg += 'updated a ticket.'
-      ticketSlack(msg + ' (' + req.body.release + ')')
-      res.send('ok')
+    if(req.body.state_name === 'complete'){
+      var msg = '"' + req.body.name + '" bought a new ticket. (' + req.body.release + ')'
+      console.log('send to slack:', msg)
+      ticketSlack(msg)
     }
-    else res.send('error')
+    else {
+      console.log('skipped webhook:', whname, '-', req.body.state_name)
+    }
+    res.send('ok')
   }
   else res.send('error')
 })
