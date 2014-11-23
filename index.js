@@ -25,7 +25,7 @@ app.post('/tito/:key', function(req, res){
   var whname = req.headers['x-webhook-name']
   if(req.params.key  && req.params.key === process.env.TITO_ACCESS_KEY && whname){
     if(req.body.state_name === 'complete'){
-      var msg = '"' + req.body.name + '" bought a new ticket. (' + req.body.release + ')'
+      var msg = '"' + req.body.name + '" bought/updated a new ticket. (' + req.body.release + ')'
       console.log('send to slack:', msg)
       ticketSlack(msg)
     }
