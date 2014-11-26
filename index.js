@@ -5,7 +5,9 @@ var app = require('express')()
 var bodyParser = require('body-parser')
 var server = require('http').Server(app)
 
-var slack = require('slack-notify')(process.env.SLACK_WEBHOOK_URL);
+if(!process.env.SLACK_WEBHOOK_URL || !process.env.TITO_ACCESS_KEY) return console.log('no SLACK_WEBHOOK_URL or TITO_ACCESS_KEY set')
+
+var slack = require('slack-notify')(process.env.SLACK_WEBHOOK_URL)
 
 slack.onError = function(err){
   console.log('slack error:', err)
