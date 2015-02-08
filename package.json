@@ -4,7 +4,7 @@
   "description": "webhook server for tito",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "standard",
     "start": "nf start"
   },
   "repository": {
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/conc-at/ticket-webhook-server",
   "devDependencies": {
-    "foreman": "^1.1.0"
+    "foreman": "^1.1.0",
+    "standard": "*"
   },
   "dependencies": {
     "body-parser": "^1.9.2",
